@@ -1,0 +1,13 @@
+{%esc:s}
+"PERFORMER "{owner_name}"{~n}
+TITLE "{title}"{~n}
+FILE "{audiofilenamenoext}.wav" WAVE{~n}
+{#sections}
+{@lt key=start_time value=4440}
+{~s}{~s}TRACK {track_number2} AUDIO{~n}
+{~s}{~s}{~s}{~s}TITLE "{chapter}"{~n}
+{~s}{~s}{~s}{~s}PERFORMER "{artist}"{~n}
+{~s}{~s}{~s}{~s}INDEX 01 {timestamp}{~n}
+{/lt}
+{/sections}
+{/esc}

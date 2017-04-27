@@ -1,0 +1,11 @@
+{%esc:s}
+PERFORMER "{owner_name}"{~n}
+TITLE "{title}"{~n}
+{#sections}
+FILE "{track_number2}. {chapter}.m4a" WAVE{~n}
+{~s}{~s}TRACK {track_number2} AUDIO{~n}
+{~s}{~s}{~s}{~s}TITLE "{track_number2}. {?chapter}{chapter}{/chapter}"{~n}
+{~s}{~s}{~s}{~s}PERFORMER "{artist}"{~n}
+{~s}{~s}{~s}{~s}INDEX 01 00:00:00{~n}
+{/sections}
+{/esc}

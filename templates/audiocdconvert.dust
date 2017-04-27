@@ -1,0 +1,3 @@
+{%esc:s}
+ffmpeg -i "{audiofilenamenoext}.m4a" "{audiofilenamenoext}.wav" 
+{/esc}

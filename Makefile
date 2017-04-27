@@ -1,8 +1,8 @@
 #
 # Source
 # ------
-BUILD := manifest.json images/* build/mixcloud-tracklist.js
-SOURCE := manifest.json images/* templates/*.dust tracklist.js
+BUILD := manifest.json options.* background.* images/* build/mixcloud-tracklist.js
+SOURCE := manifest.json options.* background.* images/* templates/*.dust tracklist.js
 
 
 # Executable path
