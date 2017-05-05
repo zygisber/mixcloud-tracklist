@@ -15,22 +15,19 @@
             {?downloads}
             <hr>
             <h1>Downloads</h1>
+            &nbsp
             <div>
-              <a id=audiofilelink>Download audio file</a> OR input file name if you have local copy of this mix <input id=audiofilename style="height:20px;" type="text" size=50 name=""> <br>
-              <p>Audio file dowload uses Mixcloud downloader service witch is times faster than direct Mixcloud file dowload. Mixcloud provides m4a audio file format witch has limited support in regular media players.</p>
-              &nbsp
+              <button class="btn" id=audiofilelink name="post" type="submit">Download M4A</button>{~s}{~s}or 
+              <button class="btn" id=localfilename name="post" type="submit">Select local mix file</button>
+              <hr size="30" width="0">
             </div>
             <div>              
-              <a id=audiocdscript>Download audio CD CUE and conversion script</a><br>
-              <p>Audio CD script converts m4a to wav using ffmped and creates CUE file. Use CUE with Imgburn to create gaples audio CD with separate mix tracks. Mixes over 74min will be truncated to fit into CD.</p>
-              <p>IMPORTANT: ffmpeg must be on the system and included in PATH for script to run correctly.</p>
-              &nbsp
+              <button class="btn" id=audiocdscript name="post" type="submit">Download audio CD files</button>
+              <hr size="30" width="0">
             </div>
             <div>  
-              <a id=cuescript>Download mix CUE and track extraction script</a> OR <br>
-              <p>Track extraction script extracts separate m4a tracks from mix and crates CUE playlist. CUE should be compatible with most media players - vlc, windows media player, etc.</p>
-              <p>IMPORTANT: ffmpeg must be on the system and included in PATH for script to run correctly.</p>
-              &nbsp
+              <button class="btn" id=cuescript name="post" type="submit">Download files for track extraction</button>
+              <hr size="30" width="0">
             </div>
             {/downloads}
         </div>

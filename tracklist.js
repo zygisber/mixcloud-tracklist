@@ -21,7 +21,7 @@ browser.onChange(browser.querySelector('[m-contents="maincontent"]'), main);
 
 function main() {
 	const parent = browser.querySelector('[ng-controller="CloudcastHeaderCtrl"]');
-	
+
 	if (parent !== null) {
 		fetchData(window.location, (data) => {
 			const tracklistTemplate = require('./templates/tracklist')(dust); // Required by both new and legacy
@@ -99,14 +99,11 @@ function render(source, data, fn) {
 	});
 }
 
-function mixlinkclick(event) {
-	console.log(event);
-}
-
 function toggleEvents(tracklistContainer, toggleContainer, data) {
 	const button = toggleContainer.querySelector('.tracklist-toggle-text');
 	const tracklist = tracklistContainer.querySelector('.cloudcast-tracklist');
 	const audiofilelink = document.getElementById('audiofilelink');
+	const localfilename = document.getElementById('localfilename');
 	const audiocdscript = document.getElementById('audiocdscript');
 	const spiltscript = document.getElementById('cuescript');
 
@@ -140,6 +137,18 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 			url: "http://download.mixcloud-downloader.com/download" + data.url,
 			filename: data.filename
 		});
+	});
+
+
+	localfilename.addEventListener('click', function (event) {
+		var input=document.createElement('input');
+		input.type="file";
+		input.addEventListener('change', function () {
+			console.log(input);
+		})
+		setTimeout(function(){
+			input.click();
+		},200);
 	});
 
 	spiltscript.addEventListener('click', function (event) {
@@ -214,6 +223,30 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 		}; 
 	});
 }
+
+
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+	var key;
+	var reload = false;
+	for (key in changes) {
+		var storageChange = changes[key];
+		if (key == "reload" && storageChange.newValue == true) {
+			reload = true;
+		}
+		console.log('Storage key "%s" in namespace "%s" changed. ' +
+			'Old value was "%s", new value is "%s".',
+			key,
+			namespace,
+			storageChange.oldValue,
+			storageChange.newValue);
+        }
+	if (reload) {
+		chrome.storage.sync.set({
+			reload: false	
+		}, function () {});
+		location.reload();
+	};
+});
 
 function convertUTF (string) {
 	string = string.replace(/\r\n/g,"\n");

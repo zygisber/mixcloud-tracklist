@@ -1,6 +1,5 @@
 {%esc:s}
 {#sections}
 ffmpeg -i "{audiofilename}" -acodec copy -t {track_length} -ss {start_time} "{track_number2}. {chapter}.m4a"{~n}
-pause{~n}
 {/sections}
 {/esc}
