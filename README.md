@@ -1,4 +1,6 @@
 # Mixcloud Tracklist & Downloads browser extension
+(updating in progress)
+
 
 This is an *unofficial* Mixcloud browser extension. It displays the tracklist
 the same way it did before they changed their [licensing][mc-support]. Track list is also
