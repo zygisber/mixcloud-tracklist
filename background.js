@@ -5,7 +5,7 @@ var audiofilename;
 chrome.downloads.onChanged.addListener(function(delta) {
 	if (delta.filename) {
 		if (delta.id == localStorage.audiofileid) {
-			localStorage.audiofilename = delta.filename.current.split('\\').pop().split('/').pop();;
+			localStorage.audiofilename = delta.filename.current;
 			chrome.tabs.query({
 				active: true 
 			}, function(tabs){
@@ -53,6 +53,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.type === "savecdcue" || 
 	    request.type === "savecdscript" || 
 	    request.type === "cueplaylist" || 
+	    request.type === "savem3ulist" || 
 	    request.type === "splitaudio") {
 		chrome.downloads.download({
 			url: request.data,

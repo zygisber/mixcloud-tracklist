@@ -1,0 +1,9 @@
+{%esc:s}
+{#sections}
+#EXTM3U{~n}
+#EXTINF:{track_length},{track_number2}. {?chapter}{chapter}{/chapter}{~n}
+#EXTVLCOPT:start-time={start_time}{~n}
+#EXTVLCOPT:stop-time={end_time}{~n}
+{audiofilename}{~n}
+{/sections}
+{/esc}

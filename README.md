@@ -1,20 +1,16 @@
-# Mixcloud Tracklist browser extension
+# Mixcloud Tracklist & Downloads browser extension
 
 This is an *unofficial* Mixcloud browser extension. It displays the tracklist
-the same way it did before they changed their [licensing][mc-support].
-It supports the new Mixcloud website, having come out of beta in January 2017.
-Support for the old (~2013-2016) Mixcloud website has been dropped as of
-version 4.2.0.
+the same way it did before they changed their [licensing][mc-support]. It also
+intractive, you can click on track to jump to that track in media player.
 
-The extension has been built with [Mozilla's WebExtensions API][moz-webext] so
-it should be compatible with Mozilla Firefox, Google Chrome, and any other
-browser that supports the WebExtension APIs.
+It supports the new Mixcloud website, having come out of beta in January 2017.
+
 
 ---
 
  - [Google Chrome Extension][chrome-install]
- - [Mozilla Firefox Add-on][firefox-install]
- - [Tampermonkey Userscript][tampermonkey-install] for users on other browsers (requires [Tampermonkey][tampermonkey])
+ - Other browsers - not tested
 
 ---
 
@@ -29,8 +25,6 @@ Yep, it used to be built into the Mixcloud website, but their licensing changed 
 >
 > Last Updated: Jul 28, 2015 05:20PM IST
 
-## Thanks
- - [Perry Harlock](https://github.com/perryharlock) for helping me with the the HTML template and for debugging some of the compatibility issues with the new Mixcloud website :heart:
 
 ## License
 The content of this library is released under the **MIT License** by

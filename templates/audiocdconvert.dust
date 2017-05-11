@@ -1,3 +1,8 @@
 {%esc:s}
-ffmpeg -i "{audiofilenamenoext}.m4a" "{audiofilenamenoext}.wav" 
+{@eq key=audiofileext value="m4a"}
+ffmpeg -i "{audiofilename}" "{audiofilenamenoext}.wav"
+{:else}
+echo "You don't need any conversion as your burner (e.g. Imgburn) should support CUE to burn audio CD"{~n}
+pause
+{/eq} 
 {/esc}

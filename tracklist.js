@@ -85,8 +85,10 @@ function updateData(data, options) {
 	
 		if (i == data.cloudcast.sections.length - 1) {
 			section.track_length = data.cloudcast.audio_length - section.start_time;
+			section.end_time = data.cloudcast.audio_length;
 		} else {
 			section.track_length = data.cloudcast.sections[i + 1].start_time - section.start_time;
+			section.end_time = data.cloudcast.sections[i + 1].start_time;
 		};
     	});
 	return data;
@@ -102,11 +104,8 @@ function render(source, data, fn) {
 function toggleEvents(tracklistContainer, toggleContainer, data) {
 	const button = toggleContainer.querySelector('.tracklist-toggle-text');
 	const tracklist = tracklistContainer.querySelector('.cloudcast-tracklist');
-	const audiofilelink = document.getElementById('audiofilelink');
-	const localfilename = document.getElementById('localfilename');
-	const audiocdscript = document.getElementById('audiocdscript');
-	const spiltscript = document.getElementById('cuescript');
 
+	// Event listiner for "show/hide track list" button
 	button.addEventListener('click', event => {
 		const hide = button.querySelector('[ng-show="tracklistShown"]');
 		const show = button.querySelector('[ng-show="!tracklistShown"]');
@@ -116,8 +115,8 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 		tracklist.classList.toggle('ng-hide');
 	});
 
-	data.filename = data.owner_name + " - " + data.title;
-
+	
+	// generation of linkst to qiuck jump to play track
 	var index = 0;
 	for (index = 0; index < data.sections.length; ++index) {
 		console.log(data.sections[index]);
@@ -129,32 +128,49 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 
 	}	
 
-	if (!data.downloads) return;	
+	if (!data.downloads) return; //nothing to process, downloads section disabled in options	
 
+	// mixcloud downloader
+	const audiofilelink = document.getElementById('audiofilelink');
+	data.filename = data.owner_name + " - " + data.title;
 	audiofilelink.addEventListener('click', function (event) {
+		//background.js
 		chrome.runtime.sendMessage({
 			type: "saveaudio",
 			url: "http://download.mixcloud-downloader.com/download" + data.url,
 			filename: data.filename
 		});
+
+
+	});
+	 
+	chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
+		if (msg.action == 'audiofilename') {
+			setAudioFile(data, msg.name);		
+			saveM3uPlaylist(data);
+		}
 	});
 
 
+	// local mix file selection
+	const localfilename = document.getElementById('localfilename');
 	localfilename.addEventListener('click', function (event) {
 		var input=document.createElement('input');
 		input.type="file";
 		input.addEventListener('change', function () {
-			console.log(input);
+			setAudioFile(data, input.value);
+			saveM3uPlaylist(data);
 		})
 		setTimeout(function(){
 			input.click();
 		},200);
 	});
 
+	// track splitter	
+	const spiltscript = document.getElementById('cuescript');
 	spiltscript.addEventListener('click', function (event) {
-
 		if (!data.audiofilename) { 
-			alert("Please download audio file first.");
+			alert("You must dowload mix or select local file first for playlist generation.");
 			return; 
 		};
 
@@ -162,10 +178,10 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 			data.cuelistUTF8 = convertUTF(encodeURI(cuelist));
 			console.log(cuelist)
 		});
-
+		//background.js
 		chrome.runtime.sendMessage({
 			type: "cueplaylist", 
-			filename: "playlist - " + data.audiofilenamenoext + ".cue",
+			filename: data.audiofilenamenoext + ".cue",
 			data: 'data:text/plain;charset=utf-8,' + data.cuelistUTF8
 		});
 
@@ -174,7 +190,7 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 			console.log(splitaudio)
 		});
 
-
+		//background.js
 		chrome.runtime.sendMessage({
 			type: "splitaudio", 
 			filename: "extracttracks.bat",
@@ -182,11 +198,12 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 		});
 	});
 
-
+	// audio CD creator
+	const audiocdscript = document.getElementById('audiocdscript');
 	audiocdscript.addEventListener('click', function (event) {
 
 		if (!data.audiofilename) { 
-			alert("Please download audio file first.");
+			alert("You must dowload mix or select local file first for playlist generation.");
 			return; 
 		};
 
@@ -195,9 +212,10 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 			console.log(audiocdcuelist)
 		});
 
+		//background.js
 		chrome.runtime.sendMessage({
 			type: "savecdcue", 
-			filename: data.audiofilenamenoext + ".cue",
+			filename: "CD - " + data.audiofilenamenoext + ".cue",
 			data: 'data:text/plain;charset=utf-8,' + data.audiocdcuelistUTF8
 		});
 
@@ -206,7 +224,7 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 			console.log(audiocdconvert)
 		});
 
-
+		//background.js
 		chrome.runtime.sendMessage({
 			type: "savecdscript", 
 			filename: "audiocdconvert.bat",
@@ -215,15 +233,29 @@ function toggleEvents(tracklistContainer, toggleContainer, data) {
 
 	});
 
-	chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
-		if (msg.action == 'audiofilename') {
-			data.audiofilename = msg.name;
-			data.audiofilenamenoext = data.audiofilename.substring(0, data.audiofilename.lastIndexOf('.'));
-			return;
-		}; 
-	});
 }
 
+
+function setAudioFile(data, fullName) {
+	data.audiofilename = fullName.split('\\').pop().split('/').pop();
+	data.audiofilenamenoext = data.audiofilename.substring(0, data.audiofilename.lastIndexOf('.'));
+	data.audiofileext = data.audiofilename.substring(data.audiofilename.lastIndexOf('.')+1);
+	const audiofilename = document.getElementById('audiofilename');
+	audiofilename.textContent = data.audiofilename;
+}
+
+
+function saveM3uPlaylist(data) {                                       
+	render(require('./templates/m3ulist')(dust), data, m3ulist => {
+		data.m3ulist = convertUTF(encodeURI(m3ulist));
+		console.log(m3ulist)
+	});
+	chrome.runtime.sendMessage({
+		type: "savem3ulist",
+		filename: data.audiofilenamenoext + ".m3u",
+		data: 'data:text/plain;charset=utf-8,' + data.m3ulist
+	});
+}
 
 chrome.storage.onChanged.addListener(function(changes, namespace) {
 	var key;

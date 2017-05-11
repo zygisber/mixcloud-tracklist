@@ -16,19 +16,24 @@
             <hr>
             <h1>Downloads</h1>
             &nbsp
-            <div>
-              <button class="btn" id=audiofilelink name="post" type="submit">Download M4A</button>{~s}{~s}or 
-              <button class="btn" id=localfilename name="post" type="submit">Select local mix file</button>
-              <hr size="30" width="0">
-            </div>
-            <div>              
-              <button class="btn" id=audiocdscript name="post" type="submit">Download audio CD files</button>
-              <hr size="30" width="0">
-            </div>
-            <div>  
-              <button class="btn" id=cuescript name="post" type="submit">Download files for track extraction</button>
-              <hr size="30" width="0">
-            </div>
+            <table>
+              <tr>
+                <td height="40"><button width = "150" class="btn" id=audiofilelink name="post" type="submit">Download M4A & save playlist</button></td>
+                <td height="40"><p align=center style="width:30px">or</p></td> 
+                <td height="40"><button width = "150" class="btn" id=localfilename name="post" type="submit">Select local mix file & save playlist</button></td>
+              </tr>
+            </table>  
+            <table>
+              <tr>
+                <td height="30" valign=center><p>Selected file: </em><em id=audiofilename>{?audiofilename}{audiofilename}{:else}none{/audiofilename}</p></td>
+              </tr>
+              <tr>
+                <td height="40" valign="center"><button width = "150" class="btn" id=cuescript name="post" type="submit">Download files for track extraction</button></td>
+              </tr>
+              <tr>
+                <td height="40" valign="center"><button width = "150" class="btn" id=audiocdscript name="post" type="submit">Download audio CD files</button></td>
+              </tr>  
+            </table>
             {/downloads}
         </div>
     </div>

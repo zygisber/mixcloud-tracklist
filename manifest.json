@@ -1,9 +1,9 @@
 {
-  "name": "Mixcloud Tracklist",
-  "version": "4.2.0",
+  "name": "Mixcloud Tracklist & Downloads",
+  "version": "1.2.0",
   "manifest_version": 2,
-  "description": "Display tracklists on Mixcloud",
-  "homepage_url": "https://github.com/adlawson/mixcloud-tracklist",
+  "description": "Display tracklists on Mixcloud and provide some download options",
+  "homepage_url": "https://github.com/zygisber/mixcloud-tracklist",
   "icons": {
     "16": "images/mixcloud-16.png",
     "48": "images/mixcloud-48.png",
@@ -23,7 +23,6 @@
     "downloads.open", 
     "downloads.shelf",
     "contextMenus",
-    "storage",
     "tabs"
   ],
   
