@@ -49,24 +49,30 @@ The content of this library is released under the **MIT License** by
 
 ## Download options
 ### Why downloading a mix?
+--
 If you just want to listen to a mix, use Mixcloud directly. That's the best option you have when internet is available. However sometimes you don't have internet access, but still want to listen to your favorite mix. This could be in a car which is only equipped with a CD or USB player, during jogging with your MP3 player or while a flight without a broadband connection. For those scenarios you can use these downloads to download your favorite mix and listen to it offline.
 
 ### Download mix file with playlist
 ![download](readme_images/scr3.png)
+--
 This will download mix in one file (M4A or MP3 if available). M3U playlist will be also generated. Only VLC player supports track skipping for such playlist. For other options read further.
 
 ## OR
 ### Select local mix file and generate playlist
 ![select](readme_images/scr4.png)
+--
 This option is usefull if you have better quality mix file but do not have playlistm, e.g. artist provided original mix file:
 ![original](readme_images/scr7.png)
+--
 It will also produce better quality output for options below.
 
 ### Download files for track extraction
 ![spilt](readme_images/scr5.png)
+--
 
 ### Download audio CD files
 ![original](readme_images/scr6.png)
+--
 
 [chrome-install]: https://chrome.google.com/webstore/detail/mixcloud-tracklist-downlo/lglkomjmpemepahcicfhkpbcmfncpefi
 [mc-support]: http://support.mixcloud.com/customer/portal/articles/1595557
