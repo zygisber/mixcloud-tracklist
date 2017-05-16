@@ -60,10 +60,10 @@ This will download mix in one file (M4A or MP3 if available). M3U playlist will 
 ### Select local mix file and generate playlist
 ![select](readme_images/scr4.png)
 
-This option is usefull if you have better quality mix file but do not have playlistm, e.g. artist provided original mix file:
-![original](readme_images/scr7.png)
+This option is usefull if you have better quality mix file but do not have playlist and most importantly - it will also produce better quality output for later options below. 
 
-It will also produce better quality output for options below.
+Some artists provide original mix file :)
+![original](readme_images/scr7.png)
 
 ### Download files for track extraction
 ![spilt](readme_images/scr5.png)
