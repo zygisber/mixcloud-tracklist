@@ -71,10 +71,19 @@ Some artists provide original mix file :)
 ### Download files for track extraction
 ![spilt](readme_images/scr5.png)
 
+This will create (windows!) script for extraction of separate tracks and create playlist compatible with most players
+![spilt2](readme_images/scr8.png)
+
+**IMPORTANT** ffmpeg must be on the system and PATH environment variable set to ffmpeg bin folder
+![ffmpeg](readme_images/scr9.png)
 
 ### Download audio CD files
-![original](readme_images/scr6.png)
+![audiocd](readme_images/scr10.png)
 
+This will create (windows!) script for audio conversion to format suitable to burn Audio CD and create CUE playlist for burner (e.g. ImgBurn)
+
+**IMPORTANT** ffmpeg must be on the system and PATH environment variable set to ffmpeg bin folder
+![ffmpeg](readme_images/scr9.png)
 
 [chrome-install]: https://chrome.google.com/webstore/detail/mixcloud-tracklist-downlo/lglkomjmpemepahcicfhkpbcmfncpefi
 [mc-support]: http://support.mixcloud.com/customer/portal/articles/1595557
