@@ -21,6 +21,8 @@ Extension supports the new Mixcloud website, having come out of beta in January 
 ---
 
 ![Screenshot](screenshot.png)
+---
+![Screenshot2](screenshot2.png)
 
 ## Didn't this used to exist?
 Yep, it used to be built into the Mixcloud website, but their licensing changed meaning they couldn't show the tracklist.
@@ -34,8 +36,14 @@ Yep, it used to be built into the Mixcloud website, but their licensing changed 
 
 ## License
 The content of this library is released under the **MIT License** by
-**ﬁygintasBernotaviËius**.<br/> You can find a copy of this license in
+**≈Ωygintas Bernotaviƒçius**.<br/> You can find a copy of this license in
 [`LICENSE`](LICENSE) or at http://opensource.org/licenses/mit.
+
+# Instruction
+
+Extension options:
+![options](readme_images/scr1.png)
+
 
 [chrome-install]: https://chrome.google.com/webstore/detail/mixcloud-tracklist-downlo/lglkomjmpemepahcicfhkpbcmfncpefi
 [mc-support]: http://support.mixcloud.com/customer/portal/articles/1595557
