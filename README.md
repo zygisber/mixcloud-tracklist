@@ -40,12 +40,15 @@ The content of this library is released under the **MIT License** by
 [`LICENSE`](LICENSE) or at http://opensource.org/licenses/mit.
 
 # Instructions
+## Play any track
+Click on any track name to jump to that track in mixcloud player
+
+![track selection](readme_images/scr2.png)
 
 ## Extension options:
-![options](readme_images/scr1.png)
+By default track time and downloads options are not visible, but you can make them visible in extension options
 
-## Play any track
-![track selection](readme_images/scr2.png)
+![options](readme_images/scr1.png)
 
 ## Download options
 ### Why downloading a mix?
