@@ -1,5 +1,8 @@
 # Mixcloud Tracklist & Downloads browser extension
 
+## Important - duo to changed (again) MixCloud API, this extension does not work at the moment. Update is under development. Sorry. If you are a developer feel free to give a helping hand :) 
+
+
 This is an *unofficial* Mixcloud browser extension. It displays the tracklist
 the same way it did before they changed their [licensing][mc-support]. 
 Extension was originally created by [Andrew Lawson][originalgit]. 
